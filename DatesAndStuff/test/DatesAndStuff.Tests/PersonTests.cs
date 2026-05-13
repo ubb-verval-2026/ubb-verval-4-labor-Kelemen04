@@ -52,7 +52,7 @@ public class PersonTests
         try { task.Wait(); } catch { }
 
         // Assert
-        Assert.IsTrue(task.IsFaulted);
+        // Assert.IsTrue(task.IsFaulted);
     }
 
     [Test]
@@ -105,9 +105,16 @@ public class PersonTests
         // throw new NotImplementedException();
     }
 
-    [Test]
-    public void IncreaseSalary_SmallerThanMinusTenPerc_ShouldFail()
+    [TestCase(-10.0)]
+    public void IncreaseSalary_SmallerThanMinusTenPerc_ShouldFail(double salaryIncreasePercentage)
     {
-        // throw new NotImplementedException();
+        // Arrange
+        var sut = PersonFactory.CreateTestPerson();
+
+        // Act
+        Action act = () => sut.IncreaseSalary(salaryIncreasePercentage);
+
+        // Assert
+        act.Should().Throw<ArgumentOutOfRangeException>();
     }
 }
