@@ -143,10 +143,10 @@ public class PersonPageTests
 
         // Assert
         var inputError = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@data-test='SalaryIncreaseInputError']")));
-        inputError.Text.Should().Contain("between -10 and infinity");
+        inputError.Text.Should().Contain("between -9.99 and infinity");
 
         var globalError = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@data-test='SalaryIncreaseGlobalError']")));
-        globalError.Text.Should().Contain("between -10 and infinity");
+        globalError.Text.Should().Contain("between -9.99 and infinity");
     }
     private bool IsElementPresent(By by)
     {
